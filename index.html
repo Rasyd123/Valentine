@@ -157,6 +157,18 @@
                     </div>
                     <p class="envelope-hint" id="envelopeHint">Tap untuk membuka</p>
                 </div>
+                <!-- Tombol kontrol musik -->
+<button class="music-btn" id="musicBtn" aria-label="Musik">
+    <span class="music-icon">🔊</span>
+    <span class="music-pulse"></span>
+</button>
+
+<!-- Audio background (gunakan sumber musik yang valid) -->
+<audio id="bgMusic" loop preload="auto">
+    <!-- Ganti dengan file musik lokal atau URL streaming -->
+    <source src="SpotiDownloader.com - About You - The 1975.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
+</audio>
 
                 <div class="glass-card final-card hidden" id="finalContent">
                     <div class="card-glow"></div>
@@ -191,3 +203,4 @@
 </body>
 
 </html>
+
