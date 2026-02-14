@@ -27,6 +27,19 @@
 
     <div class="sparkle-container" id="sparkleContainer"></div>
 
+    <!-- Tombol kontrol musik -->
+    <button class="music-btn" id="musicBtn" aria-label="Musik">
+        <span class="music-icon">🔊</span>
+        <span class="music-pulse"></span>
+    </button>
+
+    <!-- Audio background (otomatis loop, coba autoplay) -->
+    <audio id="bgMusic" loop preload="auto">
+        <!-- Ganti dengan file musik Anda sendiri, misalnya "musik.mp3" -->
+        <source src="AboutYouThe1975.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
     <main id="app">
 
         <section id="page1" class="page active">
@@ -157,7 +170,7 @@
                     </div>
                     <p class="envelope-hint" id="envelopeHint">Tap untuk membuka</p>
                 </div>
-                
+
                 <div class="glass-card final-card hidden" id="finalContent">
                     <div class="card-glow"></div>
                     <div class="final-emoji">💞</div>
@@ -167,7 +180,7 @@
                         <p id="finalMessage">
                             Makasih ya sudah hadir dan bikin hariku selalu terasa cukup. Kamu adalah alasan kenapa
                             senyum itu mudah muncul. Semoga hari harimu selalu penuh kehangatan dan kebahagiaan. Aku
-                            selalu ada untukmu. Love u. Happy Valentine 💕
+                            selalu ada untukmu. Happy Valentine 💕
                         </p>
                         <div class="message-decoration right">✨</div>
                     </div>
@@ -180,17 +193,6 @@
                             <span class="btn-shine"></span>
                         </button>
                     </div>
-                    <!-- Tombol kontrol musik (akan muncul di pojok kanan atas) -->
-<button class="music-btn" id="musicBtn" aria-label="Musik">
-    <span class="music-icon">🔊</span>
-    <span class="music-pulse"></span>
-</button>
-<!-- Audio background dengan autoplay (bisa diblokir browser) -->
-<audio id="bgMusic" loop preload="auto">
-    <!-- Ganti dengan file musik Anda sendiri -->
-    <source src="SpotiDownloader.com - About You - The 1975.mp3" type="audio/mpeg">
-    Browser Anda tidak mendukung elemen audio.
-</audio>
                     <p id="copyNotif" class="copy-notif hidden">Pesan berhasil dicopy! </p>
                 </div>
             </div>
@@ -201,7 +203,4 @@
     <script src="script.js"></script>
 </body>
 
-</html>
-
-
-
+                            </html>
