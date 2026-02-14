@@ -50,8 +50,35 @@ const elements = {
     envelopeWrapper: document.getElementById('envelopeWrapper'),
     envelope: document.getElementById('envelope'),
     finalContent: document.getElementById('finalContent')
+    musicBtn: document.getElementById('musicBtn'),
+    bgMusic: document.getElementById('bgMusic')
 };
+// Fungsi untuk memutar/menjeda musik
+function toggleMusic() {
+    if (!elements.bgMusic) return;
+    if (state.musicPlaying) {
+        elements.bgMusic.pause();
+        elements.musicBtn?.classList.remove('playing');
+        state.musicPlaying = false;
+    } else {
+        elements.bgMusic.play().catch(e => console.log('Gagal memutar musik:', e));
+        elements.musicBtn?.classList.add('playing');
+        state.musicPlaying = true;
+    }
+}
 
+// Autoplay musik saat halaman dimuat
+function initAutoplay() {
+    if (!elements.bgMusic) return;
+    elements.bgMusic.volume = 0.5; // Atur volume (0.0 - 1.0)
+    elements.bgMusic.play().then(() => {
+        state.musicPlaying = true;
+        elements.musicBtn?.classList.add('playing');
+    }).catch(err => {
+        console.log('Autoplay diblokir. Pengguna perlu mengklik tombol musik.');
+        // opsional: tampilkan pesan atau biarkan tombol siap diklik
+    });
+}
 function createSparkles() {
     for (let i = 0; i < 20; i++) {
         const sparkle = document.createElement('div');
@@ -359,38 +386,12 @@ function initMouseTrail() {
         setTimeout(() => heart.remove(), 1000);
     });
 } 
-// Fungsi untuk memutar/menjeda musik
-function toggleMusic() {
-    if (!elements.bgMusic) return;
-    if (state.musicPlaying) {
-        elements.bgMusic.pause();
-        elements.musicBtn?.classList.remove('playing');
-        state.musicPlaying = false;
-    } else {
-        elements.bgMusic.play().catch(e => console.log('Gagal memutar musik:', e));
-        elements.musicBtn?.classList.add('playing');
-        state.musicPlaying = true;
-    }
-}
 
-// Autoplay musik saat halaman dimuat
-function initAutoplay() {
-    if (!elements.bgMusic) return;
-    elements.bgMusic.volume = 0.5; // Atur volume (0.0 - 1.0)
-    elements.bgMusic.play().then(() => {
-        state.musicPlaying = true;
-        elements.musicBtn?.classList.add('playing');
-    }).catch(err => {
-        console.log('Autoplay diblokir. Pengguna perlu mengklik tombol musik.');
-        // Tampilkan indikasi bahwa musik siap diputar (opsional)
-    });
-}
 document.addEventListener('DOMContentLoaded', () => {
-    if (elements.musicBtn) elements.musicBtn.addEventListener('click', toggleMusic);
     applyConfig();
     initEventListeners();
     createSparkles();
     new ParticleSystem();
     initMouseTrail();
-    initAutoplay();
+    initAutoplay(); 
 });
