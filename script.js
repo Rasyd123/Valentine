@@ -23,7 +23,14 @@ const CONFIG = {
     copySuccess: "Pesan berhasil dicopy! "
 };
 
-const state = { currentPage: 1, hasClickedYes: false, noClickCount: 0, bouquetTaken: false, musicPlaying: false, photos: [null, null, null, null] };
+const state = {
+    currentPage: 1,
+    hasClickedYes: false,
+    noClickCount: 0,
+    bouquetTaken: false,
+    musicPlaying: false,
+    photos: [null, null, null, null]
+};
 
 const elements = {
     pages: document.querySelectorAll('.page'),
@@ -50,9 +57,8 @@ const elements = {
     envelopeWrapper: document.getElementById('envelopeWrapper'),
     envelope: document.getElementById('envelope'),
     finalContent: document.getElementById('finalContent')
-    musicBtn: document.getElementById('musicBtn'),
-    bgMusic: document.getElementById('bgMusic')
 };
+
 // Fungsi untuk memutar/menjeda musik
 function toggleMusic() {
     if (!elements.bgMusic) return;
@@ -76,9 +82,10 @@ function initAutoplay() {
         elements.musicBtn?.classList.add('playing');
     }).catch(err => {
         console.log('Autoplay diblokir. Pengguna perlu mengklik tombol musik.');
-        // opsional: tampilkan pesan atau biarkan tombol siap diklik
+        // Browser blokir autoplay, biarkan tombol siap diklik
     });
 }
+
 function createSparkles() {
     for (let i = 0; i < 20; i++) {
         const sparkle = document.createElement('div');
@@ -385,7 +392,7 @@ function initMouseTrail() {
 
         setTimeout(() => heart.remove(), 1000);
     });
-} 
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     applyConfig();
@@ -393,5 +400,5 @@ document.addEventListener('DOMContentLoaded', () => {
     createSparkles();
     new ParticleSystem();
     initMouseTrail();
-    initAutoplay(); 
+    initAutoplay(); // Aktifkan autoplay musik
 });
